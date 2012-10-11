@@ -76,7 +76,12 @@
     [starMenuItem8 release];
     [starMenuItem9 release];
     
-    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds menus:menus];
+    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.window.bounds];
+    menu.menusArray = menus;
+    menu.addButton = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"bg-addbutton.png"]
+                                           highlightedImage:[UIImage imageNamed:@"bg-addbutton-highlighted.png"]
+                                               ContentImage:[UIImage imageNamed:@"icon-plus.png"]
+                                    highlightedContentImage:[UIImage imageNamed:@"icon-plus-highlighted.png"]];
     
 	// customize menu
 	/*
@@ -86,6 +91,9 @@
 	menu.farRadius = 180.0f;
 	menu.endRadius = 100.0f;
 	menu.nearRadius = 50.0f;
+    menu.animationDuration = 10.0f;
+    menu.shouldRotateMenuItems = NO;
+    menu.addButtonAngle = M_PI * 1.5;
 	*/
 	
     menu.delegate = self;

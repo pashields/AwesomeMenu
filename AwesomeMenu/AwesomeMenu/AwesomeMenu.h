@@ -17,12 +17,12 @@
     NSArray *_menusArray;
     int _flag;
     NSTimer *_timer;
-    AwesomeMenuItem *_addButton;
     
     id<AwesomeMenuDelegate> _delegate;
     BOOL _isAnimating;
 }
 @property (nonatomic, copy) NSArray *menusArray;
+@property (nonatomic, retain) AwesomeMenuItem *addButton;
 @property (nonatomic, getter = isExpanding) BOOL expanding;
 @property (nonatomic, assign) id<AwesomeMenuDelegate> delegate;
 
@@ -40,10 +40,17 @@
 @property (nonatomic, assign) CGFloat menuWholeAngle;
 @property (nonatomic, assign) CGFloat expandRotation;
 @property (nonatomic, assign) CGFloat closeRotation;
+@property (nonatomic, assign) CGFloat addButtonAngle;
 
-- (id)initWithFrame:(CGRect)frame menus:(NSArray *)aMenusArray;
+@property (nonatomic, assign) BOOL shouldRotateMenuItems;
+@property (nonatomic, assign) NSTimeInterval animationDuration;
+
+- (id)initWithFrame:(CGRect)frame;
 @end
 
 @protocol AwesomeMenuDelegate <NSObject>
+@optional
+- (void)AwesomeMenuWillExpand:(AwesomeMenu *)menu;
+- (void)AwesomeMenuDidShrink:(AwesomeMenu *)menu;
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx;
 @end
