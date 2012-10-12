@@ -308,6 +308,7 @@
 				GCC_PREFIX_HEADER = "AwesomeMenu/AwesomeMenu-Prefix.pch";
 				INFOPLIST_FILE = "AwesomeMenu/AwesomeMenu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-fdiagnostics-show-option";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -320,6 +321,7 @@
 				GCC_PREFIX_HEADER = "AwesomeMenu/AwesomeMenu-Prefix.pch";
 				INFOPLIST_FILE = "AwesomeMenu/AwesomeMenu-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-fdiagnostics-show-option";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
