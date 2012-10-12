@@ -28,6 +28,8 @@
 @property (nonatomic) CGPoint nearPoint;
 @property (nonatomic) CGPoint farPoint;
 
+@property (nonatomic, assign)CGSize size;
+
 @property (nonatomic, assign) id<AwesomeMenuItemDelegate> delegate;
 
 - (id)initWithImage:(UIImage *)img 

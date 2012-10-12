@@ -94,6 +94,7 @@
     menu.animationDuration = 10.0f;
     menu.shouldRotateMenuItems = NO;
     menu.addButtonAngle = M_PI * 1.5;
+    menu.addButton.size = CGSizeMake(100, 100);
 	*/
 	
     menu.delegate = self;
