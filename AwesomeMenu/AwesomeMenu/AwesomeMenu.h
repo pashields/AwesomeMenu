@@ -43,6 +43,7 @@
 @property (nonatomic, assign) CGFloat addButtonAngle;
 
 @property (nonatomic, assign) BOOL shouldRotateMenuItems;
+@property (nonatomic, assign) BOOL shouldRotateRootItem;
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 
 - (id)initWithFrame:(CGRect)frame;

@@ -21,6 +21,7 @@ static CGFloat const kAwesomeMenuDefaultExpandRotation = M_PI;
 static CGFloat const kAwesomeMenuDefaultCloseRotation = M_PI * 2;
 static CGFloat const kAwesomeMenuDefaultAddButtonAngle = -M_PI_4;
 static BOOL const kAwesomeMenuDefaultShouldRotateMenuItems = YES;
+static BOOL const kAwesomeMenuDefaultShouldRotateRootItem = YES;
 static NSTimeInterval const kAwesomeMenuDefaultAnimationDuration = 0.5f;
 
 
@@ -65,6 +66,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
         self.closeRotation = kAwesomeMenuDefaultCloseRotation;
         self.addButtonAngle = kAwesomeMenuDefaultAddButtonAngle;
         self.shouldRotateMenuItems = kAwesomeMenuDefaultShouldRotateMenuItems;
+        self.shouldRotateRootItem = kAwesomeMenuDefaultShouldRotateRootItem;
         self.animationDuration = kAwesomeMenuDefaultAnimationDuration;
     }
     return self;
@@ -182,10 +184,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     _expanding = NO;
     
     // rotate "add" button
-    float angle = self.isExpanding ? -M_PI_4 : 0.0f;
-    [UIView animateWithDuration:0.2f animations:^{
-        _addButton.transform = CGAffineTransformMakeRotation(angle);
-    }];
+    if (self.shouldRotateRootItem) {
+        float angle = self.isExpanding ? -M_PI_4 : 0.0f;
+        [UIView animateWithDuration:0.2f animations:^{
+            _addButton.transform = CGAffineTransformMakeRotation(angle);
+        }];
+    }
     
     if ([_delegate respondsToSelector:@selector(AwesomeMenu:didSelectIndex:)])
     {
@@ -261,10 +265,12 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     _expanding = expanding;    
     
     // rotate add button
-    float angle = self.isExpanding ? self.addButtonAngle : 0.0f;
-    [UIView animateWithDuration:0.2f animations:^{
-        _addButton.transform = CGAffineTransformMakeRotation(angle);
-    }];
+    if (self.shouldRotateRootItem) {
+        float angle = self.isExpanding ? self.addButtonAngle : 0.0f;
+        [UIView animateWithDuration:0.2f animations:^{
+            _addButton.transform = CGAffineTransformMakeRotation(angle);
+        }];
+    }
     
     // expand or close animation
     if (!_timer) 
