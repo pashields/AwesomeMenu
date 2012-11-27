@@ -221,7 +221,7 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 - (void)setAddButton:(AwesomeMenuItem *)addButton
 {
     [_addButton release];
-    _addButton = addButton;
+    _addButton = [addButton retain];
     if (self.addButton) {
         [self addSubview:self.addButton];
         self.addButton.center = self.startPoint;
