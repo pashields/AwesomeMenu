@@ -72,6 +72,20 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     return self;
 }
 
+- (void)close
+{
+    if (self.expanding) {
+        self.expanding = NO;
+    }
+}
+
+- (void)expand
+{
+    if (!self.expanding) {
+        self.expanding = YES;
+    }
+}
+
 - (void)dealloc
 {
     [_addButton release];
@@ -256,6 +270,8 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
 {
     if (expanding && [_delegate respondsToSelector:@selector(AwesomeMenuWillExpand:)]) {
         [_delegate AwesomeMenuWillExpand:self];
+    } else if (!expanding && [_delegate respondsToSelector:@selector(AwesomeMenuDidShrink:)]) {
+        [_delegate AwesomeMenuDidShrink:self];
     }
     
 	if (expanding) {
@@ -380,9 +396,6 @@ static CGPoint RotateCGPointAroundCenter(CGPoint point, CGPoint center, float an
     [item.layer addAnimation:animationgroup forKey:@"Close"];
     item.center = item.startPoint;
     _flag --;
-    if ([_delegate respondsToSelector:@selector(AwesomeMenuDidShrink:)]) {
-        [_delegate AwesomeMenuDidShrink:self];
-    }
 }
 
 - (CAAnimationGroup *)_blowupAnimationAtPoint:(CGPoint)p

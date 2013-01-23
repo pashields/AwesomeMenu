@@ -47,6 +47,8 @@
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 
 - (id)initWithFrame:(CGRect)frame;
+- (void)close;
+- (void)expand;
 @end
 
 @protocol AwesomeMenuDelegate <NSObject>

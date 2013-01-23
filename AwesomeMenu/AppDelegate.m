@@ -101,6 +101,18 @@
     [self.window addSubview:menu];
     [menu release];
     
+    UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [closeButton setTitle:@"Close" forState:UIControlStateNormal];
+    [closeButton addTarget:menu action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    closeButton.frame = CGRectMake(20, 400, 100, 50);
+    [self.window addSubview:closeButton];
+    
+    UIButton *openButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [openButton setTitle:@"Open" forState:UIControlStateNormal];
+    [openButton addTarget:menu action:@selector(expand) forControlEvents:UIControlEventTouchUpInside];
+    openButton.frame = CGRectMake(200, 400, 100, 50);
+    [self.window addSubview:openButton];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
